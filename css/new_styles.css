@@ -28,8 +28,6 @@ img {
 
 }
 
-
-
 /* Основные стили для навигации */
 nav {
   display: flex;
@@ -49,6 +47,10 @@ nav a {
 
 .menu-header {
   display: none; /* по умолчанию скрыто */
+}
+
+.menu-toggle {
+  display: none;
 }
 
 /* Стили для мобильной версии */
@@ -309,6 +311,7 @@ main {
 .feature-text {
   width: 30%;
   background-color: #000000;
+  text-align: center;
 }
 
 .feature-text h3 {
