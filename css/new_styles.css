@@ -242,26 +242,8 @@ h2 {
 main {
  
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 0px 0px;
   font-family: 'Segoe UI', sans-serif;
-}
-
-.feature {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  margin-bottom: 60px;
-}
-
-.feature.reverse {
-  flex-direction: row-reverse;
-}
-
-.feature-image {
-  width: 70%;
-  border-radius: 12px;
-  object-fit: cover;
-
 }
 
 .product-card {
@@ -307,11 +289,32 @@ main {
   text-align: center;
 }
 
+.feature {
+  display: flex;
+  align-items: stretch;
+  gap: 0px;
+  margin-bottom: 0px;
+}
+
+.feature.reverse {
+  flex-direction: row-reverse;
+}
+
+.feature-image {
+  width: 70%;
+  border-radius: 0px;
+  object-fit: cover;
+}
 
 .feature-text {
-  width: 30%;
-  background-color: #000000;
+  flex: 1; /* Занимает оставшееся пространство */
+  background-color: rgba(0, 0, 0, 0.3);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Выравнивание контента по вертикали */
+  padding: 20px; /* Добавляем отступы для текста */
+  box-sizing: border-box; /* Учитываем padding в общей ширине */
 }
 
 .feature-text h3 {
