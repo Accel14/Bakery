@@ -1,0 +1,421 @@
+h1,
+h2 {
+  font-family: 'Pacifico', cursive;
+}
+
+* {
+    background-image: url('img/back.png');
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  margin: 0;
+  color: #dbcc69;
+  
+  background-color: #1a160e;
+  background-image: url('img/back.png');
+}
+
+header {
+  background-color: #110e01;
+  padding: 1em;
+  padding-bottom: 0em;
+  text-align: center;
+}
+
+img {
+  width: 100%;
+
+}
+
+
+
+/* Основные стили для навигации */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px 20px;
+  position: relative; /* Добавляем, чтобы кнопка оставалась поверх меню */
+  z-index: 10; /* Кнопка будет над меню */
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.menu-header {
+  display: none; /* по умолчанию скрыто */
+}
+
+/* Стили для мобильной версии */
+@media (max-width: 768px) {
+  /* Кнопка меню */
+  .menu-toggle {
+    display: block;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    position: relative;
+    z-index: 20; /* Кнопка меню должна быть поверх остальных элементов */
+  }
+
+  /* Скрытое меню, выезжающее справа */
+  .menu {
+    position: fixed;
+    top: 0;
+    right: -250px;  /* Меню скрыто справа */
+    width: 250px;
+    height: 100vh;
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 20px; /* Для отступа сверху */
+    transition: right 0.3s ease; /* Плавная анимация */
+    z-index: 15; /* Меню должно быть выше других элементов */
+  }
+
+  /* Меню при активном состоянии (выезжает справа) */
+  .menu.open {
+    right: 0;  /* Показываем меню */
+  }
+
+  /* Заголовок меню (логотип и описание) */
+  .menu-header {
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .menu-logo {
+    max-width: 80%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .menu-description {
+    color: white;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  /* Ссылки в меню */
+  .menu a {
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    font-size: 18px;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #444;
+  }
+
+  .menu a:hover {
+    background-color: #555;
+  }
+}
+
+
+
+footer {
+  background-color: #1f1d11;
+  text-align: center;
+  padding: 1em;
+}
+
+.stripe {
+  background-color: rgb(40, 41, 19);
+  min-height: 10px;
+  width: 100%;
+}
+
+.text-part {
+  background-color: #000000;
+  opacity: 70%;
+  width: 100%;
+}
+
+.scroll {
+  margin: 20px auto;
+  padding: 15px;
+  max-width: 600px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  border: 1px solid #ddd;
+}
+
+.container {
+  position: relative;
+  margin: 30px auto;
+  max-width: 1000px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.text-block-left,
+.text-block-right {
+  position: absolute;
+  bottom: 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 16px 24px;
+  border-radius: 8px;
+  max-width: 60%;
+}
+
+.text-block-left {
+  left: 20px;
+}
+
+.text-block-right {
+  right: 20px;
+}
+
+main {
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+
+.foods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  max-width: 1200px;   /* ограничим по ширине */
+  margin: 0 auto;      /* выровняет по центру */
+  padding: 20px;       /* немного воздуха вокруг */
+}
+
+@media (max-width: 768px) {
+  .food_category {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .food_category {
+    width: 100%;
+  }
+}
+
+.food_category {
+  width: calc(33.333% - 20px); /* 3 в ряд, учитывая gap */
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.food_category img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+
+
+.product {
+  background-color: #dbcc69;
+
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.feature.reverse {
+  flex-direction: row-reverse;
+}
+
+.feature-image {
+  width: 70%;
+  border-radius: 12px;
+  object-fit: cover;
+
+}
+
+.product-card {
+  width: 260px;
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: sans-serif;
+  border-style:groove;
+  border-color: #a2a82f;
+
+  transition: transform 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+}
+
+.product-image-wrapper {
+  position: relative;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  border-bottom: 1px solid #eee;
+}
+
+.food-image {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  border-radius: 50%;
+  padding: 6px;
+  filter: drop-shadow(5px 5px 5px #222);
+}
+
+.product-info {
+  padding: 12px;
+  text-align: center;
+}
+
+
+.feature-text {
+  width: 30%;
+  background-color: #000000;
+}
+
+.feature-text h3 {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+}
+
+.feature-text p {
+  font-size: 1rem;
+  margin-bottom: 16px;
+  color: #bdb9b9;
+}
+
+.button {
+  display: inline-block;
+  background-color: #c97a40;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #a8622f;
+}
+
+@media (max-width: 768px) {
+  .feature {
+    flex-direction: column;
+  }
+
+  .feature.reverse {
+    flex-direction: column;
+  }
+
+  .feature-image,
+  .feature-text {
+    width: 100%;
+  }
+
+  .feature-text {
+    text-align: center;
+  }
+}
+
+
+#category-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin: 40px 0;
+}
+
+.category-banner {
+  position: relative;
+  width: 30%;
+  min-width: 250px;
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.category-banner:hover {
+  transform: scale(1.02);
+}
+
+.category-banner .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.category-banner .banner-text {
+  position: absolute;
+  bottom: 15px;
+  left: 20px;
+  color: white;
+  font-size: 1.4rem;
+  font-weight: bold;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .category-banner {
+    width: 100%;
+    height: 140px;
+  }
+}
+
+
+.category-banner h2 {
+  color: white;
+  font-size: 2rem;
+  text-shadow: 1px 1px 4px black;
+}

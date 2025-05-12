@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Пекарня "Хлебная лавка"</title>
+  <link rel="stylesheet" href="css/new_styles.css" />
+</head>
+
+<body>
+  <header>
+    <div style="display: flex">
+      <img src="img/logo.png" style="width: 100px; height: 98px">
+      <h1 style="align-self: center;">Пекарня "Хлебная лавка"</h1>
+    </div>
+
+    <nav>
+      <button class="menu-toggle" id="menuToggle">Меню</button>
+      <div class="menu" id="menu">
+        <div class="menu-header">
+          <img src="logo.png" alt="Логотип" class="menu-logo"> <!-- Логотип -->
+          <p class="menu-description">Добро пожаловать в нашу пекарню!</p> <!-- Дополнительная информация -->
+        </div>
+        <a href="index.html">Главная</a>
+        <a href="products.html">Ассортимент</a>
+        <a href="order.html">Заказ</a>
+        <a href="about.html">О нас</a>
+      </div>
+    </nav>
+
+    <div class="stripe">
+      <input type="text">
+    </div>
+  </header>
+
+  <main>
+    <section id="category-cards">
+      <div class="category-banner" data-id="1" style="background-image: url('img/bakery.jpg');">
+        <div class="overlay"></div>
+        <div class="banner-text">Булочные изделия</div>
+      </div>
+      <div class="category-banner" data-id="2" style="background-image: url('img/sweets.png');">
+        <div class="overlay"></div>
+        <div class="banner-text">Сладкое</div>
+      </div>
+      <div class="category-banner" data-id="3" style="background-image: url('img/drinks.png');">
+        <div class="overlay"></div>
+        <div class="banner-text">Напитки</div>
+      </div>
+    </section>
+
+
+    <section style="justify-content: space-between; max-width: 700px;" id="category-buttons">
+      <button onclick="loadProducts(1)">Булочные</button>
+      <button onclick="loadProducts(2)">Сладкое</button>
+      <button onclick="loadProducts(3)">Напитки</button>
+    </section>
+
+    <div id="product-list" style="display: flex; flex-wrap: wrap; gap: 20px;"></div>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Пекарня "Хлебная лавка"</p>
+  </footer>
+
+  <script>
+    document.getElementById('menuToggle').addEventListener('click', function () {
+      const menu = document.getElementById('menu');
+      menu.classList.toggle('open');
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const categoryCards = document.getElementById('category-cards');
+      const categoryButtons = document.getElementById('category-buttons');
+      const productList = document.getElementById('product-list');
+
+      // При клике на большие баннеры
+      document.querySelectorAll('.category-banner').forEach(card => {
+        card.addEventListener('click', () => {
+          const categoryId = card.dataset.id;
+          categoryCards.style.display = 'none';
+          categoryButtons.style.display = 'flex';
+          loadProducts(categoryId);
+        });
+      });
+
+      // При клике на маленькие кнопки
+      document.querySelectorAll('.category-button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const categoryId = btn.dataset.id;
+          loadProducts(categoryId);
+        });
+      });
+    });
+
+    // Загрузка продуктов
+    function loadProducts(categoryId) {
+      fetch(`http://localhost:3000/products?category_id=${categoryId}`)
+        .then(res => res.json())
+        .then(products => {
+          const container = document.getElementById('product-list');
+          container.innerHTML = '';
+          products.forEach(product => {
+            const el = document.createElement('div');
+            el.classList.add('product-card');
+
+            el.innerHTML = `
+            <div class="product-image-wrapper" style="background-image: url('img/board_t.png')"">
+              <img src="food/${product.image_path}" class="food-image" alt="${product.name}">
+            </div>
+            <div class="product-info">
+              <h3>${product.name}</h3>
+              <p>${product.mass} грамм</p>
+              <strong>${product.price} руб.</strong>
+            </div>
+          `;
+            container.appendChild(el);
+          });
+        });
+    }
+
+  </script>
+</body>
+
+</html>

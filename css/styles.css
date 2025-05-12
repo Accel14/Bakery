@@ -1,0 +1,144 @@
+h1,
+h2 {
+  font-family: 'Pacifico', cursive;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  margin: 0;
+  color: #dbcc69;
+  background-color: #1a160e;
+}
+
+header {
+  background-color: #3d3322;
+  background-color: #110e01;
+  padding: 1em;
+  padding-bottom: 0em;
+  text-align: center;
+}
+
+img {
+  width: 100%;
+
+}
+
+nav a {
+  margin: 0 1em;
+  text-decoration: none;
+  color: #e5dd4b;
+}
+
+
+footer {
+  background-color: #1f1d11;
+  text-align: center;
+  padding: 1em;
+}
+
+.text-part {
+  background-color: #000000;
+  opacity: 70%;
+  width: 100%;
+}
+
+.scroll {
+  margin: 20px auto;
+  padding: 15px;
+  max-width: 600px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  border: 1px solid #ddd;
+}
+
+.container {
+  position: relative;
+  margin: 30px auto;
+  max-width: 1000px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.text-block-left,
+.text-block-right {
+  position: absolute;
+  bottom: 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 16px 24px;
+  border-radius: 8px;
+  max-width: 60%;
+}
+
+.text-block-left {
+  left: 20px;
+}
+
+.text-block-right {
+  right: 20px;
+}
+
+main {
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+
+.foods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  max-width: 1200px;   /* ограничим по ширине */
+  margin: 0 auto;      /* выровняет по центру */
+  padding: 20px;       /* немного воздуха вокруг */
+}
+
+@media (max-width: 768px) {
+  .food_category {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .food_category {
+    width: 100%;
+  }
+}
+
+.food_category {
+  width: calc(33.333% - 20px); /* 3 в ряд, учитывая gap */
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.food_category img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+
+
+.product {
+  background-color: #dbcc69;
+
+}
