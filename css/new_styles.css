@@ -35,7 +35,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
+  background-color: #2e2b24;
   padding: 10px 20px;
   position: relative; /* Добавляем, чтобы кнопка оставалась поверх меню */
   z-index: 10; /* Кнопка будет над меню */
@@ -185,12 +185,6 @@ footer {
 
 .text-block-right {
   right: 20px;
-}
-
-main {
-  padding: 20px;
-  font-family: 'Segoe UI', sans-serif;
-  text-align: center;
 }
 
 h2 {
