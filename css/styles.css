@@ -104,9 +104,12 @@ h2 {
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
-  max-width: 1200px;   /* ограничим по ширине */
-  margin: 0 auto;      /* выровняет по центру */
-  padding: 20px;       /* немного воздуха вокруг */
+  max-width: 1200px;
+  /* ограничим по ширине */
+  margin: 0 auto;
+  /* выровняет по центру */
+  padding: 20px;
+  /* немного воздуха вокруг */
 }
 
 @media (max-width: 768px) {
@@ -122,7 +125,8 @@ h2 {
 }
 
 .food_category {
-  width: calc(33.333% - 20px); /* 3 в ряд, учитывая gap */
+  width: calc(33.333% - 20px);
+  /* 3 в ряд, учитывая gap */
   position: relative;
   overflow: hidden;
   border-radius: 8px;

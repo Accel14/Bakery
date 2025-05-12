@@ -4,14 +4,14 @@ h2 {
 }
 
 * {
-    background-image: url('img/back.png');
+  background-image: url('img/back.png');
 }
 
 body {
   font-family: 'Nunito', sans-serif;
   margin: 0;
   color: #dbcc69;
-  
+
   background-color: #1a160e;
   background-image: url('img/back.png');
 }
@@ -35,8 +35,10 @@ nav {
   align-items: center;
   background-color: #2e2b24;
   padding: 10px 20px;
-  position: relative; /* Добавляем, чтобы кнопка оставалась поверх меню */
-  z-index: 10; /* Кнопка будет над меню */
+  position: relative;
+  /* Добавляем, чтобы кнопка оставалась поверх меню */
+  z-index: 10;
+  /* Кнопка будет над меню */
 }
 
 nav a {
@@ -46,7 +48,8 @@ nav a {
 }
 
 .menu-header {
-  display: none; /* по умолчанию скрыто */
+  display: none;
+  /* по умолчанию скрыто */
 }
 
 .menu-toggle {
@@ -55,6 +58,7 @@ nav a {
 
 /* Стили для мобильной версии */
 @media (max-width: 768px) {
+
   /* Кнопка меню */
   .menu-toggle {
     display: block;
@@ -64,14 +68,16 @@ nav a {
     padding: 10px;
     font-size: 16px;
     position: relative;
-    z-index: 20; /* Кнопка меню должна быть поверх остальных элементов */
+    z-index: 20;
+    /* Кнопка меню должна быть поверх остальных элементов */
   }
 
   /* Скрытое меню, выезжающее справа */
   .menu {
     position: fixed;
     top: 0;
-    right: -250px;  /* Меню скрыто справа */
+    right: -250px;
+    /* Меню скрыто справа */
     width: 250px;
     height: 100vh;
     background-color: #333;
@@ -79,14 +85,18 @@ nav a {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding-top: 20px; /* Для отступа сверху */
-    transition: right 0.3s ease; /* Плавная анимация */
-    z-index: 15; /* Меню должно быть выше других элементов */
+    padding-top: 20px;
+    /* Для отступа сверху */
+    transition: right 0.3s ease;
+    /* Плавная анимация */
+    z-index: 15;
+    /* Меню должно быть выше других элементов */
   }
 
   /* Меню при активном состоянии (выезжает справа) */
   .menu.open {
-    right: 0;  /* Показываем меню */
+    right: 0;
+    /* Показываем меню */
   }
 
   /* Заголовок меню (логотип и описание) */
@@ -200,9 +210,12 @@ h2 {
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
-  max-width: 1200px;   /* ограничим по ширине */
-  margin: 0 auto;      /* выровняет по центру */
-  padding: 20px;       /* немного воздуха вокруг */
+  max-width: 1200px;
+  /* ограничим по ширине */
+  margin: 0 auto;
+  /* выровняет по центру */
+  padding: 20px;
+  /* немного воздуха вокруг */
 }
 
 @media (max-width: 768px) {
@@ -218,7 +231,8 @@ h2 {
 }
 
 .food_category {
-  width: calc(33.333% - 20px); /* 3 в ряд, учитывая gap */
+  width: calc(33.333% - 20px);
+  /* 3 в ряд, учитывая gap */
   position: relative;
   overflow: hidden;
   border-radius: 8px;
@@ -240,7 +254,7 @@ h2 {
 }
 
 main {
- 
+
   margin: 0 auto;
   padding: 0px 0px;
   font-family: 'Segoe UI', sans-serif;
@@ -251,9 +265,9 @@ main {
   height: 300px;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   font-family: sans-serif;
-  border-style:groove;
+  border-style: groove;
   border-color: #a2a82f;
 
   transition: transform 0.2s;
@@ -307,14 +321,18 @@ main {
 }
 
 .feature-text {
-  flex: 1; /* Занимает оставшееся пространство */
+  flex: 1;
+  /* Занимает оставшееся пространство */
   background-color: rgba(0, 0, 0, 0.3);
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Выравнивание контента по вертикали */
-  padding: 20px; /* Добавляем отступы для текста */
-  box-sizing: border-box; /* Учитываем padding в общей ширине */
+  justify-content: center;
+  /* Выравнивание контента по вертикали */
+  padding: 20px;
+  /* Добавляем отступы для текста */
+  box-sizing: border-box;
+  /* Учитываем padding в общей ширине */
 }
 
 .feature-text h3 {
@@ -412,7 +430,6 @@ main {
     height: 140px;
   }
 }
-
 
 .category-banner h2 {
   color: white;
