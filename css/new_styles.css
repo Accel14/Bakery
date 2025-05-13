@@ -4,7 +4,7 @@ h2 {
 }
 
 * {
-  background-image: url('img/back.png');
+  
 }
 
 body {
@@ -14,6 +14,7 @@ body {
 
   background-color: #1a160e;
   background-image: url('img/back.png');
+  background-size: 50vh;
 }
 
 header {
@@ -22,6 +23,8 @@ header {
   padding-bottom: 0em;
   text-align: center;
 }
+
+
 
 img {
   width: 100%;
@@ -33,7 +36,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #2e2b24;
+  
   padding: 10px 20px;
   position: relative;
   /* Добавляем, чтобы кнопка оставалась поверх меню */
@@ -59,13 +62,17 @@ nav a {
 /* Стили для мобильной версии */
 @media (max-width: 768px) {
 
+  .header-last {
+    display: none;
+  }
+
   /* Кнопка меню */
   .menu-toggle {
     display: block;
     background-color: #333;
     color: white;
     border: none;
-    padding: 10px;
+    padding: 0px;
     font-size: 16px;
     position: relative;
     z-index: 20;
@@ -107,9 +114,10 @@ nav a {
   }
 
   .menu-logo {
-    max-width: 80%;
+    max-width: 50%;
     height: auto;
     margin-bottom: 10px;
+    
   }
 
   .menu-description {
@@ -327,7 +335,8 @@ main {
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+
+  justify-content:space-evenly;
   /* Выравнивание контента по вертикали */
   padding: 20px;
   /* Добавляем отступы для текста */
@@ -336,18 +345,19 @@ main {
 }
 
 .feature-text h3 {
-  font-size: 1.8rem;
+  font-size: 2.8rem;
   margin-bottom: 12px;
 }
 
 .feature-text p {
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin-bottom: 16px;
   color: #bdb9b9;
 }
 
 .button {
   display: inline-block;
+  font-size: 1.2rem;
   background-color: #c97a40;
   color: white;
   padding: 10px 20px;

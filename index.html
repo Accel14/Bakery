@@ -9,9 +9,11 @@
 </head>
 
 <body style="background-image: url('img/back.png');">
+  
   <header style=" background-size: 50px 60px">
+    
     <div style="display: flex; justify-content: space-between;">
-      <img src="img/logo.png" style="width: 100px; height: 98px;">
+      <a href="index.html"><img src="img/logo.png" style="width: 13vh; height: 12vh;"></a>
       <h1
         style="text-align: center; font-size: 5vh; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
         ХЛЕБНАЯ ЛАВКА</h1>
@@ -19,14 +21,15 @@
         <h3>Режим работы: каждый день с 09:00 до 21:00
           <h3>г. Уфа, ул. Проспект Октября, 180</h3>
       </div>
+      <input class="menu-toggle" id="menuToggle" type="image" src="img/menu.png" width="60vh" height="60vh" style="background-color: rgba(0, 0, 0, 0);"/>
 
     </div>
 
     <nav>
-      <button class="menu-toggle" id="menuToggle">Меню</button>
+      
       <div class="menu" id="menu">
         <div class="menu-header">
-          <img src="logo.png" alt="Логотип" class="menu-logo"> <!-- Логотип -->
+          <img src="img/logo.png" alt="Логотип" class="menu-logo" href="index.html"> <!-- Логотип -->
           <p class="menu-description">Добро пожаловать в нашу пекарню!</p> <!-- Дополнительная информация -->
         </div>
         <a href="index.html">ГЛАВНАЯ</a>
@@ -63,6 +66,8 @@
   <footer>
     <p>&copy; 2025 Пекарня "Хлебная лавка</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 
 </html>
