@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const categoryId = card.dataset.id;
       categoryCards.style.display = 'none';
       categoryButtons.style.display = 'flex';
+      document.getElementById('sort-select').style.display = 'inline';
       loadProducts(categoryId);
     });
   });
