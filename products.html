@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="css/new_styles.css" />
 </head>
 
-<body>
+<body style="background-image: url('img/back.png');">
   <header style=" background-size: 50px 60px">
     <div style="display: flex; justify-content: space-between;">
       <a href="index.html"><img src="img/logo.png" style="width: 13vh; height: 12vh;"></a>
@@ -59,6 +59,26 @@
       <button onclick="loadProducts(2)">Сладкое</button>
       <button onclick="loadProducts(3)">Напитки</button>
     </section>
+    
+    <select id="sort-select">
+      <option value="name-asc">Название (А–Я)</option>
+      <option value="name-desc">Название (Я–А)</option>
+      <option value="price-asc">Цена ↑</option>
+      <option value="price-desc">Цена ↓</option>
+      <option value="mass-asc">Масса ↑</option>
+      <option value="mass-desc">Масса ↓</option>
+    </select>
+
+    <!--
+    <div class="dropdown">
+      <button class="dropbtn">Dropdown</button>
+      <div class="dropdown-content">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+      </div>
+    </div>
+    -->
 
     <div id="product-list" style="display: flex; flex-wrap: wrap; gap: 20px;"></div>
 

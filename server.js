@@ -31,16 +31,24 @@ app.get('/categories', (req, res) => {
 // Получение продуктов по категории
 app.get('/products', (req, res) => {
   const categoryId = req.query.category_id;
-  if (!categoryId) return res.status(400).json({ error: 'Missing category_id' });
+  const sortBy = req.query.sort_by || 'name';     // По умолчанию сортировка по названию
+  const order = req.query.order === 'desc' ? 'DESC' : 'ASC'; // ASC по умолчанию
 
-  db.query(
-    'SELECT name, mass, price, image_path FROM products WHERE category_id = ?',
-    [categoryId],
-    (err, results) => {
-      if (err) return res.status(500).json({ error: err });
-      res.json(results);
-    }
-  );
+  const allowedFields = ['name', 'mass', 'price'];
+  if (!allowedFields.includes(sortBy)) {
+    return res.status(400).json({ error: 'Invalid sort field' });
+  }
+
+  const query = `
+    SELECT name, mass, price, image_path
+    FROM products
+    WHERE category_id = ${categoryId}
+    ORDER BY ${mysql.escapeId(sortBy)} ${order}
+  `;
+  db.query(query, [categoryId], (err, results) => {
+    if (err) return res.status(500).json({ error: err });
+    res.json(results);
+  });
 });
 
 app.listen(PORT, () => {
