@@ -19,7 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const categoryId = card.dataset.id;
       categoryCards.style.display = 'none';
       categoryButtons.style.display = 'flex';
-      document.getElementById('sort-select').style.display = 'inline';
+      
+      document.getElementById('sort-dropdown').style.display = 'flex';
       loadProducts(categoryId);
     });
   });
@@ -34,10 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 let currentCategory = null;
-document.getElementById('sort-select').addEventListener('change', function () {
-  const [sortBy, order] = this.value.split('-');
-  loadProducts(currentCategory, sortBy, order);
-});
+
 
 // Загрузка продуктов
 function loadProducts(categoryId, sortBy = 'name', order = 'asc') {
@@ -53,16 +51,38 @@ function loadProducts(categoryId, sortBy = 'name', order = 'asc') {
         el.classList.add('product-card');
 
         el.innerHTML = `
-            <div class="product-image-wrapper" style="background-image: url('img/board_t.png')"">
+            <div class="product-image-wrapper" style="background-image: url('img/paper.png')"">
               <img src="food/${product.image_path}" class="food-image" alt="${product.name}">
             </div>
             <div class="product-info">
               <h3>${product.name}</h3>
-              <p>${product.mass} грамм</p>
-              <strong>${product.price} руб.</strong>
+              <div class="food-info">
+                <p>${product.mass} грамм</p>
+                <strong>${product.price} руб.</strong>
+              </div>
+              <a href="products.html" class="button">В корзину</a>
             </div>
           `;
         container.appendChild(el);
       });
     });
 }
+
+// Показываем/прячем меню сортировки
+document.getElementById('sortToggle').addEventListener('click', () => {
+  const menu = document.getElementById('sort-select');  
+  menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+});
+
+document.getElementById('sort-select').addEventListener('change', function () {
+  const [sortBy, order] = this.value.split('-');
+  loadProducts(currentCategory, sortBy, order);
+});
+
+// Закрытие меню, если клик вне
+document.addEventListener('click', (e) => {
+  if (!document.querySelector('.sort-dropdown').contains(e.target)) {
+    document.getElementById('sort-select').style.display = 'none';
+  }
+});
+

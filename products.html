@@ -23,6 +23,7 @@
         style="background-color: rgba(0, 0, 0, 0);" />
     </div>
 
+    <hr>
     <nav>
       <div class="menu" id="menu">
         <div class="menu-header">
@@ -59,15 +60,20 @@
       <button onclick="loadProducts(2)">Сладкое</button>
       <button onclick="loadProducts(3)">Напитки</button>
     </section>
-    
-    <select id="sort-select" style="display: none;">
-      <option value="name-asc">Название (А–Я)</option>
-      <option value="name-desc">Название (Я–А)</option>
-      <option value="price-asc">Цена ↑</option>
-      <option value="price-desc">Цена ↓</option>
-      <option value="mass-asc">Масса ↑</option>
-      <option value="mass-desc">Масса ↓</option>
-    </select>
+
+    <div class="sort-dropdown" id="sort-dropdown" style="display: none;">
+      <button id="sortToggle" class="sort-button">↑↓</button>
+      <div id="sort-list">
+        <select id="sort-select" style="display: none;">
+          <option value="name-asc">Название (А–Я)</option>
+          <option value="name-desc">Название (Я–А)</option>
+          <option value="price-asc">Цена ↑</option>
+          <option value="price-desc">Цена ↓</option>
+          <option value="mass-asc">Масса ↑</option>
+          <option value="mass-desc">Масса ↓</option>
+        </select>
+      </div>
+    </div>
 
     <!--
     <div class="dropdown">
