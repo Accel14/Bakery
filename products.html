@@ -54,39 +54,36 @@
       </div>
     </section>
 
+    <section id="product-tools" style="justify-content: center; align-items: center; display: none">
 
-    <section style="justify-content: space-between; max-width: 700px; display: none;" id="category-buttons">
-      <button onclick="loadProducts(1)">Булочные</button>
-      <button onclick="loadProducts(2)">Сладкое</button>
-      <button onclick="loadProducts(3)">Напитки</button>
+      <div style="justify-content: space-between; max-width: 700px; display: flex;" id="category-buttons">
+        <button onclick="loadProducts(1)">Булочные</button>
+        <button onclick="loadProducts(2)">Сладкое</button>
+        <button onclick="loadProducts(3)">Напитки</button>
+      </div>
+
+      <div style="display: flex; max-height: 40px; align-items: center; justify-content: center;">
+
+        <div class="sort-dropdown" id="sort-dropdown" style="display: none;">
+          <button id="sortToggle" class="sort-button">↑↓</button>
+          <div id="sort-list">
+            <select id="sort-select" style="display: none;">
+              <option value="name-asc">Название (А–Я)</option>
+              <option value="name-desc">Название (Я–А)</option>
+              <option value="price-asc">Цена ↑</option>
+              <option value="price-desc">Цена ↓</option>
+              <option value="mass-asc">Масса ↑</option>
+              <option value="mass-desc">Масса ↓</option>
+            </select>
+          </div>
+        </div>
+        <input type="text" style="max-height: 100%;">
+
+      </div>
+
     </section>
 
-    <div class="sort-dropdown" id="sort-dropdown" style="display: none;">
-      <button id="sortToggle" class="sort-button">↑↓</button>
-      <div id="sort-list">
-        <select id="sort-select" style="display: none;">
-          <option value="name-asc">Название (А–Я)</option>
-          <option value="name-desc">Название (Я–А)</option>
-          <option value="price-asc">Цена ↑</option>
-          <option value="price-desc">Цена ↓</option>
-          <option value="mass-asc">Масса ↑</option>
-          <option value="mass-desc">Масса ↓</option>
-        </select>
-      </div>
-    </div>
-
-    <!--
-    <div class="dropdown">
-      <button class="dropbtn">Dropdown</button>
-      <div class="dropdown-content">
-        <a href="#">Link 1</a>
-        <a href="#">Link 2</a>
-        <a href="#">Link 3</a>
-      </div>
-    </div>
-    -->
-
-    <div id="product-list" style="display: flex; flex-wrap: wrap; gap: 20px;"></div>
+    <div id="product-list" class="product-list"></div>
 
   </main>
 
