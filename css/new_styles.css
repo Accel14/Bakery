@@ -367,30 +367,31 @@ main {
 /* Dropdown Button */
 .dropbtn {
   background-color: #04AA6D;
-  max-height: 20%;
   color: white;
-  padding: 16px;
+  padding: 12px 16px;
   font-size: 16px;
   border: none;
+  cursor: pointer;
 }
 
-/* The container <div> - needed to position the dropdown content */
+/* Контейнер dropdown */
 .dropdown {
   position: relative;
   display: inline-block;
 }
 
-/* Dropdown Content (Hidden by Default) */
+/* Содержимое dropdown */
 .dropdown-content {
   display: none;
   position: absolute;
+  right: 0;
   background-color: #f1f1f1;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
 
-/* Links inside the dropdown */
+/* Ссылки внутри dropdown */
 .dropdown-content a {
   color: black;
   padding: 12px 16px;
@@ -398,23 +399,34 @@ main {
   display: block;
 }
 
-/* Change color of dropdown links on hover */
+/* Изменение цвета при наведении */
 .dropdown-content a:hover {
   background-color: #ddd;
 }
 
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
+/* Показываем dropdown при добавлении класса .show */
+.dropdown-content.show {
   display: block;
-}
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {
-  background-color: #3e8e41;
 }
 
 /* Стили для мобильной версии */
 @media (max-width: 768px) {
+
+  .dropbtn {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+  
+  .dropdown-content {
+    min-width: 140px;
+    right: auto;
+    left: 0;
+  }
+  
+  .dropdown-content a {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
 
   .header-last {
     display: none;

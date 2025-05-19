@@ -67,10 +67,37 @@ function loadProducts(categoryId, sortBy = 'name', order = 'asc') {
     });
 }
 
-// Функция для открытия/закрытия dropdown (если её ещё нет)
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
+function toggleDropdown() {
+  const dropdown = document.getElementById("myDropdown");
+  dropdown.classList.toggle("show");
+  
+  // Закрытие при клике вне dropdown
+  if (dropdown.classList.contains("show")) {
+    document.addEventListener('click', closeDropdownOutside, true);
+  } else {
+    document.removeEventListener('click', closeDropdownOutside, true);
+  }
 }
+
+function closeDropdownOutside(event) {
+  const dropdown = document.getElementById("myDropdown");
+  const dropbtn = document.querySelector(".dropbtn");
+  
+  if (!dropdown.contains(event.target) && !dropbtn.contains(event.target)) {
+    dropdown.classList.remove("show");
+    document.removeEventListener('click', closeDropdownOutside, true);
+  }
+}
+
+// Обработчики для пунктов меню
+document.querySelectorAll('#myDropdown a').forEach(item => {
+  item.addEventListener('click', function(e) {
+    e.preventDefault();
+    const [sortBy, order] = this.getAttribute('value').split('-');
+    loadProducts(currentCategory, sortBy, order);
+    document.getElementById('myDropdown').classList.remove('show');
+  });
+});
 
 // Обработчик кликов по пунктам меню
 document.querySelectorAll('#myDropdown a').forEach(item => {
