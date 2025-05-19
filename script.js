@@ -19,8 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const categoryId = card.dataset.id;
       categoryCards.style.display = 'none';
       categoryButtons.style.display = 'flex';
-      document.getElementById('product-tools').style.display = 'inline';
-      document.getElementById('sort-dropdown').style.opacity = '1';
+      document.getElementById('product-tools').style.display = 'flex';
       loadProducts(categoryId);
     });
   });
@@ -68,16 +67,44 @@ function loadProducts(categoryId, sortBy = 'name', order = 'asc') {
     });
 }
 
+// Функция для открытия/закрытия dropdown (если её ещё нет)
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Обработчик кликов по пунктам меню
+document.querySelectorAll('#myDropdown a').forEach(item => {
+  item.addEventListener('click', function(e) {
+    e.preventDefault();
+    const [sortBy, order] = this.getAttribute('value').split('-');
+    loadProducts(currentCategory, sortBy, order);
+    
+    // Закрываем dropdown после выбора
+    document.getElementById('myDropdown').classList.remove('show');
+  });
+});
+
+// Закрытие dropdown при клике вне его области (опционально)
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    const dropdowns = document.getElementsByClassName("dropdown-content");
+    for (let i = 0; i < dropdowns.length; i++) {
+      const openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+/*
 // Показываем/прячем меню сортировки
 document.getElementById('sortToggle').addEventListener('click', () => {
   const menu = document.getElementById('sort-select');  
   menu.style.visibility = (menu.style.visibility === 'visible') ? 'hidden' : 'visible';
 });
 
-document.getElementById('sort-select').addEventListener('change', function () {
-  const [sortBy, order] = this.value.split('-');
-  loadProducts(currentCategory, sortBy, order);
-});
+
 
 // Закрытие меню, если клик вне
 document.addEventListener('click', (e) => {
@@ -85,4 +112,5 @@ document.addEventListener('click', (e) => {
     document.getElementById('sort-select').style.visibility = 'hidden';
   }
 });
+*/
 
