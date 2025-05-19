@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
       categoryCards.style.display = 'none';
       categoryButtons.style.display = 'flex';
       document.getElementById('product-tools').style.display = 'inline';
-      document.getElementById('sort-dropdown').style.display = 'flex';
+      document.getElementById('sort-dropdown').style.opacity = '1';
       loadProducts(categoryId);
     });
   });
@@ -71,7 +71,7 @@ function loadProducts(categoryId, sortBy = 'name', order = 'asc') {
 // Показываем/прячем меню сортировки
 document.getElementById('sortToggle').addEventListener('click', () => {
   const menu = document.getElementById('sort-select');  
-  menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+  menu.style.visibility = (menu.style.visibility === 'visible') ? 'hidden' : 'visible';
 });
 
 document.getElementById('sort-select').addEventListener('change', function () {
@@ -82,7 +82,7 @@ document.getElementById('sort-select').addEventListener('change', function () {
 // Закрытие меню, если клик вне
 document.addEventListener('click', (e) => {
   if (!document.querySelector('.sort-dropdown').contains(e.target)) {
-    document.getElementById('sort-select').style.display = 'none';
+    document.getElementById('sort-select').style.visibility = 'hidden';
   }
 });
 

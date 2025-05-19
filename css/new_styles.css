@@ -57,7 +57,7 @@ nav a {
 
 .product-list {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   justify-content: center;
 }
 
@@ -423,11 +423,9 @@ select {
 
 .sort-dropdown {
   position: relative;
-  display: inline-block;
   margin: 1rem;
   gap: 1svh;
   align-items: center;
-  background-color: #000000;
 }
 
 .sort-button {
@@ -578,13 +576,18 @@ select {
   }
 
   .product-list {
-    display: grid;
-    grid-template-columns: auto auto;
-    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    margin: 0px;
+    gap: 50px
   }
 
   .product-card {
-    width: 250px;
+    
+    max-width: 90%;
+  }
+
+  .product-image-wrapper {
+    max-width: 100%;
   }
 
   .food-info p, strong {
