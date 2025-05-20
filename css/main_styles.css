@@ -84,7 +84,12 @@ main {
   border-radius: 6px;
   transition: background-color 0.3s ease;
   min-width: 90%;
+  margin-top: 10px;
   text-align: center;
+}
+
+.from-cart-btn {
+  background-color: #d59568;
 }
 
 .button:hover {

@@ -27,13 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // При клике на маленькие кнопки
-  document.querySelectorAll('.category-button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const categoryId = btn.dataset.id;
-      loadProducts(categoryId);
-    });
-  });
+  
 });
 
 let currentCategory = null;
@@ -77,11 +71,20 @@ function addToCart(productId) {
   cart[productId] = (cart[productId] || 0) + 1;
 
   localStorage.setItem('cart', JSON.stringify(cart));
-  alert('Товар добавлен в корзину!');
+}
+
+function removeFromCart(productId) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || {};
+  cart[productId] = (cart[productId] || 0) - 1;
+  if (cart[productId] < 1) {
+    delete cart[productId];
+  }
+  localStorage.setItem('cart', JSON.stringify(cart));
 }
 
 // Загрузка продуктов
 function loadProducts(categoryId, sortBy = 'name', order = 'asc') {
+  window.scrollTo(0, 0);
   currentCategory = categoryId;
   const url = `http://localhost:3000/products?category_id=${categoryId}&sort_by=${sortBy}&order=${order}`;
   fetch(url)
@@ -102,13 +105,19 @@ function loadProducts(categoryId, sortBy = 'name', order = 'asc') {
                 <p>${product.mass} грамм</p>
                 <strong>${product.price} руб.</strong>
               </div>
-              <a class="button to-cart-btn">В корзину</a>
+              <a onclick="removeFromCart(${product.id})" class="button from-cart-btn">Убрать из корзины</a>
+              <a onclick="addToCart(${product.id})" class="button to-cart-btn">В корзину</a>
             </div>
           `;
         // Навешиваем обработчик на кнопку
+        
+        /*
         const btn = el.querySelector('.to-cart-btn');
         btn.addEventListener('click', () => addToCart(product.id));
+        */
+       
         container.appendChild(el);
+        
       });
     });
 }

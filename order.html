@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Пекарня "Хлебная лавка"</title>
-  <link rel="stylesheet" href="css/main_style.css" />
-  <link rel="stylesheet" href="css/order_style.css" />
+  <link rel="stylesheet" href="css/main_styles.css" />
+  <link rel="stylesheet" href="css/order_styles.css" />
 </head>
 
 <body style="background-image: url('img/back.png');">
@@ -42,10 +42,21 @@
     </header>
   </div>
 
+
+
+
+
   <main>
+    <div id="empty-cart" style="vertical-align: top; display: inline-block; text-align: center; position: absolute;
+    left: 42%; top: 50%">
+      <img style="width: 256px; height: 256px;" src="img/empty_cart.png">
+      <a class="caption" style="display: block">Ваша корзина пуста</a>
+    </div>
     <div id="order-list" class="order-list"></div>
 
   </main>
+
+
 
   <footer>
     <p>&copy; 2025 Пекарня "Хлебная лавка</p>
