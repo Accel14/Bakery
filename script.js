@@ -8,10 +8,13 @@ document.getElementById('menuToggle').addEventListener('click', function () {
   }
 });
 
+
+
 document.addEventListener('DOMContentLoaded', () => {
   const categoryCards = document.getElementById('category-cards');
   const categoryButtons = document.getElementById('category-buttons');
   const productList = document.getElementById('product-list');
+
 
   // При клике на большие баннеры
   document.querySelectorAll('.category-banner').forEach(card => {
@@ -19,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const categoryId = card.dataset.id;
       categoryCards.style.display = 'none';
       categoryButtons.style.display = 'flex';
-      document.getElementById('product-tools').style.display = 'flex';
+      document.getElementById('product-tools').style.display = 'inline-flex';
       loadProducts(categoryId);
     });
   });
@@ -35,6 +38,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
 let currentCategory = null;
 
+function toggleDropdown() {
+  const dropdown = document.getElementById("myDropdown");
+  dropdown.classList.toggle("show");
+
+  // Закрытие при клике вне dropdown
+  if (dropdown.classList.contains("show")) {
+    document.addEventListener('click', closeDropdownOutside, true);
+  } else {
+    document.removeEventListener('click', closeDropdownOutside, true);
+  }
+}
+
+function closeDropdownOutside(event) {
+  const dropdown = document.getElementById("myDropdown");
+  const dropbtn = document.querySelector(".dropbtn");
+
+  if (!dropdown.contains(event.target) && !dropbtn.contains(event.target)) {
+    dropdown.classList.remove("show");
+    document.removeEventListener('click', closeDropdownOutside, true);
+  }
+}
+
+// Обработчики для пунктов меню
+document.querySelectorAll('#myDropdown a').forEach(item => {
+  item.addEventListener('click', function (e) {
+    e.preventDefault();
+    const [sortBy, order] = this.getAttribute('value').split('-');
+    loadProducts(currentCategory, sortBy, order);
+    document.getElementById('myDropdown').classList.remove('show');
+  });
+});
+
+function addToCart(productId) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || {};
+
+  // Увеличиваем количество, если товар уже в корзине
+  cart[productId] = (cart[productId] || 0) + 1;
+
+  localStorage.setItem('cart', JSON.stringify(cart));
+  alert('Товар добавлен в корзину!');
+}
 
 // Загрузка продуктов
 function loadProducts(categoryId, sortBy = 'name', order = 'asc') {
@@ -48,7 +92,6 @@ function loadProducts(categoryId, sortBy = 'name', order = 'asc') {
       products.forEach(product => {
         const el = document.createElement('div');
         el.classList.add('product-card');
-
         el.innerHTML = `
             <div class="product-image-wrapper" style="background-image: url('img/paper.png')"">
               <img src="food/${product.image_path}" class="food-image" alt="${product.name}">
@@ -59,85 +102,14 @@ function loadProducts(categoryId, sortBy = 'name', order = 'asc') {
                 <p>${product.mass} грамм</p>
                 <strong>${product.price} руб.</strong>
               </div>
-              <a href="products.html" class="button">В корзину</a>
+              <a class="button to-cart-btn">В корзину</a>
             </div>
           `;
+        // Навешиваем обработчик на кнопку
+        const btn = el.querySelector('.to-cart-btn');
+        btn.addEventListener('click', () => addToCart(product.id));
         container.appendChild(el);
       });
     });
 }
-
-function toggleDropdown() {
-  const dropdown = document.getElementById("myDropdown");
-  dropdown.classList.toggle("show");
-  
-  // Закрытие при клике вне dropdown
-  if (dropdown.classList.contains("show")) {
-    document.addEventListener('click', closeDropdownOutside, true);
-  } else {
-    document.removeEventListener('click', closeDropdownOutside, true);
-  }
-}
-
-function closeDropdownOutside(event) {
-  const dropdown = document.getElementById("myDropdown");
-  const dropbtn = document.querySelector(".dropbtn");
-  
-  if (!dropdown.contains(event.target) && !dropbtn.contains(event.target)) {
-    dropdown.classList.remove("show");
-    document.removeEventListener('click', closeDropdownOutside, true);
-  }
-}
-
-// Обработчики для пунктов меню
-document.querySelectorAll('#myDropdown a').forEach(item => {
-  item.addEventListener('click', function(e) {
-    e.preventDefault();
-    const [sortBy, order] = this.getAttribute('value').split('-');
-    loadProducts(currentCategory, sortBy, order);
-    document.getElementById('myDropdown').classList.remove('show');
-  });
-});
-
-// Обработчик кликов по пунктам меню
-document.querySelectorAll('#myDropdown a').forEach(item => {
-  item.addEventListener('click', function(e) {
-    e.preventDefault();
-    const [sortBy, order] = this.getAttribute('value').split('-');
-    loadProducts(currentCategory, sortBy, order);
-    
-    // Закрываем dropdown после выбора
-    document.getElementById('myDropdown').classList.remove('show');
-  });
-});
-
-// Закрытие dropdown при клике вне его области (опционально)
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    const dropdowns = document.getElementsByClassName("dropdown-content");
-    for (let i = 0; i < dropdowns.length; i++) {
-      const openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-
-/*
-// Показываем/прячем меню сортировки
-document.getElementById('sortToggle').addEventListener('click', () => {
-  const menu = document.getElementById('sort-select');  
-  menu.style.visibility = (menu.style.visibility === 'visible') ? 'hidden' : 'visible';
-});
-
-
-
-// Закрытие меню, если клик вне
-document.addEventListener('click', (e) => {
-  if (!document.querySelector('.sort-dropdown').contains(e.target)) {
-    document.getElementById('sort-select').style.visibility = 'hidden';
-  }
-});
-*/
 

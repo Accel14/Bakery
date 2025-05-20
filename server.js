@@ -28,6 +28,37 @@ app.get('/categories', (req, res) => {
   });
 });
 
+app.get('/cart', (req, res) => {
+  const productIds = req.query.productIds;
+
+  if (!productIds) {
+    return res.status(400).json({ error: 'Missing product IDs in query parameters' });
+  }
+
+
+  const idsArray = productIds.split(',').map(id => parseInt(id.trim()));
+
+  if (idsArray.some(isNaN)) {
+    return res.status(400).json({ error: 'Invalid product IDs format' });
+  }
+
+  if (idsArray.length === 0) {
+    return res.json([]);
+  }
+
+  const placeholders = idsArray.map(() => '?').join(',');
+  const query = `
+      SELECT id, name, mass, price, image_path
+      FROM products
+      WHERE id IN (${placeholders})
+    `;
+
+  db.query(query, idsArray, (err, results) => {
+    if (err) return res.status(500).json({ error: err });
+    res.json(results);
+  });
+});
+
 // Получение продуктов по категории
 app.get('/products', (req, res) => {
   const categoryId = req.query.category_id;
@@ -40,9 +71,9 @@ app.get('/products', (req, res) => {
   }
 
   const query = `
-    SELECT name, mass, price, image_path
+    SELECT id, name, mass, price, image_path
     FROM products
-    WHERE category_id = ${categoryId}
+    WHERE category_id = ?
     ORDER BY ${mysql.escapeId(sortBy)} ${order}
   `;
   db.query(query, [categoryId], (err, results) => {
