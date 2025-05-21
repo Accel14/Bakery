@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Пекарня "Хлебная лавка"</title>
+  <link rel="stylesheet" href="css/main_styles.css" />
+  <link rel="stylesheet" href="css/catalogue_styles.css" />
+</head>
+
+<body style="background-image: url('img/back.png');">
+  <%- include('navbar', { extraTools: `
+  <div style="text-align: center; width: 100%;">
+    <section class="submenu" id="product-tools">
+      <div class="dropdown">
+        <button onclick="toggleDropdown()" class="dropbtn">↑↓</button>
+        <div id="myDropdown" class="dropdown-content">
+          <a href="#" value="name-asc">Название (А–Я)</a>
+          <a href="#" value="name-desc">Название (Я–А)</a>
+          <a href="#" value="price-asc">Цена ↑</a>
+          <a href="#" value="price-desc">Цена ↓</a>
+          <a href="#" value="mass-asc">Масса ↑</a>
+          <a href="#" value="mass-desc">Масса ↓</a>
+        </div>
+      </div>
+      <div style="justify-content: space-between; max-width: 700px; display: flex; gap: 10px" id="category-buttons">
+        <img class="category-button" src="/img/bakery_button.png" onclick="loadProducts(1)">
+        <img class="category-button" src="/img/cupcake_button.png" onclick="loadProducts(2)">
+        <img class="category-button" src="/img/drinks_button.png" onclick="loadProducts(3)">
+      </div>
+    </section>
+  </div>
+` }) %>
+
+  <main>
+    <section id="category-cards">
+      <div class="category-banner" data-id="1" style="background-image: url('img/bakery.jpg');">
+        <div class="overlay"></div>
+        <div class="banner-text">Булочные изделия</div>
+      </div>
+      <div class="category-banner" data-id="2" style="background-image: url('img/sweets.png');">
+        <div class="overlay"></div>
+        <div class="banner-text">Сладкое</div>
+      </div>
+      <div class="category-banner" data-id="3" style="background-image: url('img/drinks.png');">
+        <div class="overlay"></div>
+        <div class="banner-text">Напитки</div>
+      </div>
+    </section>
+
+
+
+    <div id="product-list" class="product-list"></div>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Пекарня "Хлебная лавка"</p>
+  </footer>
+
+  <script>
+
+  </script>
+  <script src="js/cart.js"></script>
+  <script src="js/createProductCart.js"></script>
+  <script src="js/products.js"></script>
+</body>
+
+</html>

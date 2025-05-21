@@ -5,8 +5,15 @@ const cors = require('cors');
 const app = express();
 const PORT = 3000;
 
+// Настройка EJS (исправь опечатку: 'view-engine' → 'view engine')
+app.set('view engine', 'ejs');
+app.set('views', './views');
 app.use(cors());
+app.use(express.static('.')); // Корень проекта (если CSS в корне)
+app.use('/js', express.static('js')); // Для JS-файлов
+app.use('/img', express.static('img')); // Для изображений
 
+// Подключение к БД (оставляем как есть)
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -25,7 +32,6 @@ app.get('/categories', (req, res) => {
     res.json(results);
   });
 });
-
 app.get('/cart', (req, res) => {
   const productIds = req.query.productIds;
 
@@ -57,11 +63,11 @@ app.get('/cart', (req, res) => {
   });
 });
 
-// Получение продуктов по категории
-app.get('/products', (req, res) => {
+// Этот маршрут возвращает JSON (для fetch)
+app.get('/api/products', (req, res) => {
   const categoryId = req.query.category_id;
-  const sortBy = req.query.sort_by || 'name';     // По умолчанию сортировка по названию
-  const order = req.query.order === 'desc' ? 'DESC' : 'ASC'; // ASC по умолчанию
+  const sortBy = req.query.sort_by || 'name';    
+  const order = req.query.order === 'desc' ? 'DESC' : 'ASC';
 
   const allowedFields = ['name', 'mass', 'price'];
   if (!allowedFields.includes(sortBy)) {
@@ -74,12 +80,32 @@ app.get('/products', (req, res) => {
     WHERE category_id = ?
     ORDER BY ${mysql.escapeId(sortBy)} ${order}
   `;
+
   db.query(query, [categoryId], (err, results) => {
     if (err) return res.status(500).json({ error: err });
     res.json(results);
   });
 });
 
+
+// ========== Новые маршруты для страниц ==========
+app.get('/', (req, res) => {
+  res.render('index'); // Рендерим views/index.ejs
+});
+
+app.get('/products', (req, res) => {
+  res.render('products'); // Рендерим views/index.ejs
+});
+
+app.get('/about', (req, res) => {
+  res.render('about');
+});
+
+app.get('/order', (req, res) => {
+  res.render('order'); // Рендерит views/products.ejs
+});
+
+// Запуск сервера
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });

@@ -73,19 +73,16 @@ function loadProducts(categoryId, sortBy = 'name', order = 'asc') {
   const cart = getCart();
   window.scrollTo(0, 0);
   currentCategory = categoryId;
-
-  const url = `http://localhost:3000/products?category_id=${categoryId}&sort_by=${sortBy}&order=${order}`;
+  const url = `http://localhost:3000/api/products?category_id=${categoryId}&sort_by=${sortBy}&order=${order}`;
   fetch(url)
     .then(res => res.json())
     .then(products => {
       const container = document.getElementById('product-list');
       container.innerHTML = '';
       products.forEach(product => {
-
         const el = createProductCard(product, cart);
         container.appendChild(el);
       });
-
       document.querySelectorAll('.to-cart-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.preventDefault();
