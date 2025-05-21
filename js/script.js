@@ -1,3 +1,5 @@
+
+
 document.getElementById('menuToggle').addEventListener('click', function () {
   const menu = document.getElementById('menu');
   menu.classList.toggle('open');
@@ -27,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  
+
 });
 
 let currentCategory = null;
@@ -64,28 +66,14 @@ document.querySelectorAll('#myDropdown a').forEach(item => {
   });
 });
 
-function addToCart(productId) {
-  let cart = JSON.parse(localStorage.getItem('cart')) || {};
 
-  // Увеличиваем количество, если товар уже в корзине
-  cart[productId] = (cart[productId] || 0) + 1;
-
-  localStorage.setItem('cart', JSON.stringify(cart));
-}
-
-function removeFromCart(productId) {
-  let cart = JSON.parse(localStorage.getItem('cart')) || {};
-  cart[productId] = (cart[productId] || 0) - 1;
-  if (cart[productId] < 1) {
-    delete cart[productId];
-  }
-  localStorage.setItem('cart', JSON.stringify(cart));
-}
 
 // Загрузка продуктов
 function loadProducts(categoryId, sortBy = 'name', order = 'asc') {
+  const cart = getCart();
   window.scrollTo(0, 0);
   currentCategory = categoryId;
+
   const url = `http://localhost:3000/products?category_id=${categoryId}&sort_by=${sortBy}&order=${order}`;
   fetch(url)
     .then(res => res.json())
@@ -95,30 +83,35 @@ function loadProducts(categoryId, sortBy = 'name', order = 'asc') {
       products.forEach(product => {
         const el = document.createElement('div');
         el.classList.add('product-card');
+
+        // Мы можем позже вынести создание карточки в отдельную функцию
         el.innerHTML = `
-            <div class="product-image-wrapper" style="background-image: url('img/paper.png')"">
-              <img src="food/${product.image_path}" class="food-image" alt="${product.name}">
+          <div class="product-image-wrapper" style="background-image: url('img/paper.png')">
+            <img src="food/${product.image_path}" class="food-image" alt="${product.name}">
+          </div>
+          <div class="product-info">
+            <h3>${product.name}</h3>
+            <div class="food-info">
+              <p>${product.mass} грамм</p>
+              <strong>${product.price} руб.</strong>
             </div>
-            <div class="product-info">
-              <h3>${product.name}</h3>
-              <div class="food-info">
-                <p>${product.mass} грамм</p>
-                <strong>${product.price} руб.</strong>
-              </div>
-              <a onclick="removeFromCart(${product.id})" class="button from-cart-btn">Убрать из корзины</a>
-              <a onclick="addToCart(${product.id})" class="button to-cart-btn">В корзину</a>
+            <a onclick="removeFromCart(${product.id})" class="button from-cart-btn">Убрать из корзины</a>
+            <div>
+              <a style="position: relative;" onclick="addToCart(${product.id})" class="button to-cart-btn">
+                В корзину
+                <div id="product-count" class="product-count" style="position: absolute; top:-2px; right:-2px; object-fit: contain; 
+                  background-color: rgb(27, 21, 12); border-color: white; font-size: 20px; border-radius: 20px;
+                  text-alignt: center; justify-content: center; color: rgb(200, 164, 91);
+                  width: 20px; height: 20px; padding: 3px">
+                  ${cart[product.id] || ''}
+                </div>
+              </a>
             </div>
-          `;
-        // Навешиваем обработчик на кнопку
-        
-        /*
-        const btn = el.querySelector('.to-cart-btn');
-        btn.addEventListener('click', () => addToCart(product.id));
-        */
-       
+          </div>
+        `;
         container.appendChild(el);
-        
       });
     });
 }
+
 

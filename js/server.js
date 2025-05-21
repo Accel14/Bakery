@@ -7,7 +7,6 @@ const PORT = 3000;
 
 app.use(cors());
 
-// Соединение с БД
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -20,7 +19,6 @@ db.connect(err => {
   console.log('Connected to MySQL');
 });
 
-// Получение всех категорий
 app.get('/categories', (req, res) => {
   db.query('SELECT id, name FROM categories', (err, results) => {
     if (err) return res.status(500).json({ error: err });
@@ -39,7 +37,7 @@ app.get('/cart', (req, res) => {
   const idsArray = productIds.split(',').map(id => parseInt(id.trim()));
 
   if (idsArray.some(isNaN)) {
-    return res.status(400).json({ error: 'Invalid product IDs format' });
+    return res.status(400).json({ error: 'Неверный формат ID продукта' });
   }
 
   if (idsArray.length === 0) {

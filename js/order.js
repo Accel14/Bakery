@@ -86,6 +86,8 @@ function renderCartTotal(totalCost, totalMass, totalCount) {
   const total = document.createElement('div');
   total.classList.add('order');
   total.id = 'total-order';
+  total.style.backgroundColor = 'rgb(41, 32, 18)';
+  total.style.borderRadius = '10px';
   total.innerHTML = `
     <div></div>
     <h3>Итого</h3>
