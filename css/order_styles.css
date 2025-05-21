@@ -1,36 +1,45 @@
+
+main {
+    max-width: 90%;
+}
+
+
 .order-list {
     background-color: rgba(33, 29, 15, 0.8);
     border-radius: 30px;
     padding: 10px;
 }
 
-main {
-    max-width: 90%;
-}
-
 .order {
-    display:flex;
-    width: 100%;
-    flex-direction: row;
-    
+    display: grid;
+    grid-template-columns: 80px 1fr 100px 100px 120px;
     align-items: center;
     gap: 10px;
-    
-    
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.order:last-child {
+    border-bottom: none;
 }
 
 .order .food-image {
     max-width: 80px;
+    border-radius: 8px;
 }
 
 .order h3, .order p, .order strong {
-    justify-content: center;
+    margin: 0;
 }
 
-.order p {
-
+.count {
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
-.order strong {
-
+.remove-icon {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
 }
