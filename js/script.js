@@ -81,37 +81,31 @@ function loadProducts(categoryId, sortBy = 'name', order = 'asc') {
       const container = document.getElementById('product-list');
       container.innerHTML = '';
       products.forEach(product => {
-        const el = document.createElement('div');
-        el.classList.add('product-card');
 
-        // Мы можем позже вынести создание карточки в отдельную функцию
-        el.innerHTML = `
-          <div class="product-image-wrapper" style="background-image: url('img/paper.png')">
-            <img src="food/${product.image_path}" class="food-image" alt="${product.name}">
-          </div>
-          <div class="product-info">
-            <h3>${product.name}</h3>
-            <div class="food-info">
-              <p>${product.mass} грамм</p>
-              <strong>${product.price} руб.</strong>
-            </div>
-            <a onclick="removeFromCart(${product.id})" class="button from-cart-btn">Убрать из корзины</a>
-            <div>
-              <a style="position: relative;" onclick="addToCart(${product.id})" class="button to-cart-btn">
-                В корзину
-                <div id="product-count" class="product-count" style="position: absolute; top:-2px; right:-2px; object-fit: contain; 
-                  background-color: rgb(27, 21, 12); border-color: white; font-size: 20px; border-radius: 20px;
-                  text-alignt: center; justify-content: center; color: rgb(200, 164, 91);
-                  width: 20px; height: 20px; padding: 3px">
-                  ${cart[product.id] || ''}
-                </div>
-              </a>
-            </div>
-          </div>
-        `;
+        const el = createProductCard(product, cart);
         container.appendChild(el);
       });
+
+      document.querySelectorAll('.to-cart-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const productId = parseInt(btn.dataset.id);
+          addToCart(productId);
+          updateProductCount(productId);
+        });
+      });
+
+      document.querySelectorAll('.from-cart-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const productId = parseInt(btn.dataset.id);
+          removeFromCart(productId);
+          updateProductCount(productId);
+        });
+      });
     });
+
+
 }
 
 

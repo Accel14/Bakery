@@ -30,7 +30,7 @@ app.get('/cart', (req, res) => {
   const productIds = req.query.productIds;
 
   if (!productIds) {
-    return res.status(400).json({ error: 'Missing product IDs in query parameters' });
+    return res.status(400).json({ error: 'Отсутствуют ID продуктов в параметрах запроса' });
   }
 
 

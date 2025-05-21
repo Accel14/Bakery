@@ -103,8 +103,16 @@ main {
       margin-top: -2px; border-style: none solid solid solid;
 }
 
+.main-menu {
+  display: flex; justify-content:space-between;
+}
+
 /* Стили для мобильной версии */
 @media (max-width: 768px) {
+
+  .main-menu {
+    justify-content: left;
+  }
 
   .dropbtn {
     padding: 10px 14px;
