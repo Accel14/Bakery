@@ -82,7 +82,10 @@ function loadProducts(categoryId, sortBy = 'name', order = 'asc') {
       products.forEach(product => {
         const el = createProductCard(product, cart);
         container.appendChild(el);
+        if (!cart[product.id]) { document.getElementById('product-count-' + product.id).style.display = 'none'; };
       });
+
+      // Добавление обработчиков для кнопок удаления и добавления продуктов в корзину
       document.querySelectorAll('.to-cart-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.preventDefault();
@@ -101,8 +104,6 @@ function loadProducts(categoryId, sortBy = 'name', order = 'asc') {
         });
       });
     });
-
-
 }
 
 

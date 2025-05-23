@@ -90,12 +90,12 @@ function renderCartTotal(totalCost, totalMass, totalCount) {
   total.style.borderRadius = '10px';
   total.innerHTML = `
     <div></div>
-    <h3>Итого</h3>
-    <p id="total-mass">${totalMass} гр.</p>
+    <h3 style="font-size: 24px;">Итого</h3>
+    <p  style="font-size: 20px;" id="total-mass">${totalMass} гр.</p>
     <div class="count">
-      <p id="total-products">${totalCount} шт.</p>
+      <p style="font-size: 24px;" id="total-products">${totalCount} шт.</p>
     </div>
-    <strong id="total-price">${totalCost} руб.</strong>
+    <strong style="font-size: 24px;" id="total-price">${totalCost} руб.</strong>
   `;
   container.appendChild(total);
 }

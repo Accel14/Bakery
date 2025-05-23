@@ -63,7 +63,6 @@ footer {
 
 footer p {
   color: rgb(50, 45, 26);
-  ;
 }
 
 main {
@@ -98,7 +97,7 @@ main {
 }
 
 .submenu {
-  justify-content: center; align-items: center; display: none; background-color: rgba(17, 14, 1, 1); 
+  justify-content: center; align-items: center; display: none; background: linear-gradient(rgba(17, 14, 1, 0.8), rgb(28, 23, 2)); 
       border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; gap: 10px; padding: 10px 10px 10px 10px;
       margin-top: -2px; border-style: none solid solid solid;
 }

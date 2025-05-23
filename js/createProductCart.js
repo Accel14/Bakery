@@ -16,18 +16,14 @@ function createProductCard(product, cart) {
       <div>
         <a href="#" class="button to-cart-btn" data-id="${product.id}" style="position: relative;">
           В корзину
-          <div id="product-count-${product.id}" class="product-count" style="
-            position: absolute; top:-2px; right:-2px;
-            background-color: rgb(27, 21, 12); border-color: white;
-            font-size: 20px; border-radius: 20px;
-            text-align: center; justify-content: center;
-            color: rgb(200, 164, 91); width: 20px; height: 20px; padding: 3px">
+          <div id="product-count-${product.id}" class="product-count">
             ${cart[product.id] || ''}
           </div>
         </a>
       </div>
     </div>
-  `;    
+  `;
+  
 
   return el;
 }
@@ -36,6 +32,7 @@ function updateProductCount(productId) {
   const cart = getCart();
   const count = cart[productId] || '';
   const el = document.getElementById(`product-count-${productId}`);
+  if (count === '0' || count === '') {el.style.display = 'none';} else {el.style.display = 'inline';}
   if (el) {
     el.textContent = count;
   }

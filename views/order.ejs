@@ -11,23 +11,18 @@
 
 <body style="background-image: url('img/back.png');">
   <%- include('navbar') %>
-  <main>
-    <div id="empty-cart" style="vertical-align: top; display: inline-block; text-align: center; position: absolute;
+    <main>
+      <div id="empty-cart" style="vertical-align: top; display: inline-block; text-align: center; position: absolute;
     left: 42%; top: 50%">
-      <img style="width: 256px; height: 256px;" src="img/empty_cart.png">
-      <a class="caption" style="display: block">Ваша корзина пуста</a>
-    </div>
-    <div id="order-list" class="order-list"></div>
+        <img style="width: 256px; height: 256px;" src="img/empty_cart.png">
+        <a class="caption" style="display: block">Ваша корзина пуста</a>
+      </div>
+      <div id="order-list" class="order-list"></div>
+    </main>
 
-  </main>
+    <%- include('footer') %>
 
-
-
-  <footer>
-    <p>&copy; 2025 Пекарня "Хлебная лавка</p>
-  </footer>
-
-  <script src="js/order.js"></script>
+      <script src="../js/order.js"></script>
 </body>
 
 </html>

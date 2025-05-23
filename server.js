@@ -5,15 +5,13 @@ const cors = require('cors');
 const app = express();
 const PORT = 3000;
 
-// Настройка EJS (исправь опечатку: 'view-engine' → 'view engine')
 app.set('view engine', 'ejs');
 app.set('views', './views');
 app.use(cors());
-app.use(express.static('.')); // Корень проекта (если CSS в корне)
+app.use(express.static('.')); // Корень проекта
 app.use('/js', express.static('js')); // Для JS-файлов
 app.use('/img', express.static('img')); // Для изображений
 
-// Подключение к БД (оставляем как есть)
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -32,13 +30,13 @@ app.get('/categories', (req, res) => {
     res.json(results);
   });
 });
+
 app.get('/cart', (req, res) => {
   const productIds = req.query.productIds;
 
   if (!productIds) {
     return res.status(400).json({ error: 'Отсутствуют ID продуктов в параметрах запроса' });
   }
-
 
   const idsArray = productIds.split(',').map(id => parseInt(id.trim()));
 
@@ -63,7 +61,6 @@ app.get('/cart', (req, res) => {
   });
 });
 
-// Этот маршрут возвращает JSON (для fetch)
 app.get('/api/products', (req, res) => {
   const categoryId = req.query.category_id;
   const sortBy = req.query.sort_by || 'name';    
@@ -71,7 +68,7 @@ app.get('/api/products', (req, res) => {
 
   const allowedFields = ['name', 'mass', 'price'];
   if (!allowedFields.includes(sortBy)) {
-    return res.status(400).json({ error: 'Invalid sort field' });
+    return res.status(400).json({ error: 'Неизвестный параметр сортировки' });
   }
 
   const query = `
@@ -88,13 +85,13 @@ app.get('/api/products', (req, res) => {
 });
 
 
-// ========== Новые маршруты для страниц ==========
+// Маршруты для рендера страниц
 app.get('/', (req, res) => {
-  res.render('index'); // Рендерим views/index.ejs
+  res.render('index'); // 
 });
 
 app.get('/products', (req, res) => {
-  res.render('products'); // Рендерим views/index.ejs
+  res.render('products'); 
 });
 
 app.get('/about', (req, res) => {
@@ -102,7 +99,7 @@ app.get('/about', (req, res) => {
 });
 
 app.get('/order', (req, res) => {
-  res.render('order'); // Рендерит views/products.ejs
+  res.render('order'); 
 });
 
 // Запуск сервера

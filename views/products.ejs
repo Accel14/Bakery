@@ -10,8 +10,7 @@
 </head>
 
 <body style="background-image: url('img/back.png');">
-  <%- include('navbar', { extraTools: `
-  <div style="text-align: center; width: 100%;">
+  <%- include('navbar', { extraTools: ` <div style="text-align: center; width: 100%;">
     <section class="submenu" id="product-tools">
       <div class="dropdown">
         <button onclick="toggleDropdown()" class="dropbtn">↑↓</button>
@@ -30,41 +29,39 @@
         <img class="category-button" src="/img/drinks_button.png" onclick="loadProducts(3)">
       </div>
     </section>
-  </div>
-` }) %>
+    </div>
+    ` }) %>
 
-  <main>
-    <section id="category-cards">
-      <div class="category-banner" data-id="1" style="background-image: url('img/bakery.jpg');">
-        <div class="overlay"></div>
-        <div class="banner-text">Булочные изделия</div>
-      </div>
-      <div class="category-banner" data-id="2" style="background-image: url('img/sweets.png');">
-        <div class="overlay"></div>
-        <div class="banner-text">Сладкое</div>
-      </div>
-      <div class="category-banner" data-id="3" style="background-image: url('img/drinks.png');">
-        <div class="overlay"></div>
-        <div class="banner-text">Напитки</div>
-      </div>
-    </section>
+    <main>
+      <section id="category-cards">
+        <div class="category-banner" data-id="1" style="background-image: url('img/bakery.jpg');">
+          <div class="overlay"></div>
+          <div class="banner-text">Булочные изделия</div>
+        </div>
+        <div class="category-banner" data-id="2" style="background-image: url('img/sweets.png');">
+          <div class="overlay"></div>
+          <div class="banner-text">Сладкое</div>
+        </div>
+        <div class="category-banner" data-id="3" style="background-image: url('img/drinks.png');">
+          <div class="overlay"></div>
+          <div class="banner-text">Напитки</div>
+        </div>
+      </section>
 
 
 
-    <div id="product-list" class="product-list"></div>
+      <div id="product-list" class="product-list"></div>
 
-  </main>
+    </main>
 
-  <footer>
-    <p>&copy; 2025 Пекарня "Хлебная лавка"</p>
-  </footer>
+    <%- include('footer') %>
 
-  <script>
+      <script>
 
-  </script>
-  <script src="js/cart.js"></script>
-  <script src="js/createProductCart.js"></script>
-  <script src="js/products.js"></script>
+      </script>
+      <script src="js/cart.js"></script>
+      <script src="js/createProductCart.js"></script>
+      <script src="js/products.js"></script>
 </body>
 
 </html>
