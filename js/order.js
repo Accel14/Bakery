@@ -1,10 +1,6 @@
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
   loadCart();
 });
-
 
 function removeFromCart(productId) {
   const cart = JSON.parse(localStorage.getItem('cart')) || {};

@@ -70,10 +70,11 @@ document.querySelectorAll('#myDropdown a').forEach(item => {
 
 // Загрузка продуктов
 function loadProducts(categoryId, sortBy = 'name', order = 'asc') {
-  const cart = getCart();
-  window.scrollTo(0, 0);
+  const cart = getCart(); // Получить localStorage с количеством продуктов в корзине
+  window.scrollTo(0, 0); // Вернуться на начало страницы
   currentCategory = categoryId;
-  const url = `http://localhost:3000/api/products?category_id=${categoryId}&sort_by=${sortBy}&order=${order}`;
+  const url = `http://localhost:3000/api/products?category_id=
+  ${categoryId}&sort_by=${sortBy}&order=${order}`;
   fetch(url)
     .then(res => res.json())
     .then(products => {
@@ -82,7 +83,10 @@ function loadProducts(categoryId, sortBy = 'name', order = 'asc') {
       products.forEach(product => {
         const el = createProductCard(product, cart);
         container.appendChild(el);
-        if (!cart[product.id]) { document.getElementById('product-count-' + product.id).style.display = 'none'; };
+        if (!cart[product.id]) { document.getElementById
+          ('product-count-' + product.id)
+          .style
+          .display = 'none'; };
       });
 
       // Добавление обработчиков для кнопок удаления и добавления продуктов в корзину
