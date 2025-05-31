@@ -208,3 +208,9 @@ main {
     background-color: #555;
   }
 }
+
+a.active {
+  text-decoration: underline;
+  font-weight: bold;
+  color: rgb(240, 213, 92);
+}

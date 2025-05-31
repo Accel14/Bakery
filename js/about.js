@@ -1,8 +1,3 @@
-
-document.addEventListener('DOMContentLoaded', () => {
-
-});
-
 document.querySelectorAll('.location-card').forEach(location => {
     let map = location.querySelector('.location-map');
     let img = location.querySelector('.location-img');
@@ -15,4 +10,4 @@ document.querySelectorAll('.location-card').forEach(location => {
         img.style.display = 'inline';
         map.style.display = 'none';
     })
-  });
+});

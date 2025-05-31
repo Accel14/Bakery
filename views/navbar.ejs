@@ -3,14 +3,18 @@
   <header style="background-size: 50px 60px">
     <div class="main-menu">
       <a href="/"><img src="/img/logo.png" style="width: 13vh; height: 12vh;"></a>
-      <h1 class="bakery-name" style="text-align: center; font-size: 5vh; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+      <h1 class="bakery-name"
+          style="text-align: center; font-size: 5vh; font-family:'Gill Sans', 
+          'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
         ХЛЕБНАЯ ЛАВКА
       </h1>
       <div class="header-last">
         <h3>Режим работы: каждый день с 09:00 до 21:00</h3>
         <h3>г. Уфа, ул. Проспект Октября, 180</h3>
       </div>
-      <input class="menu-toggle" id="menuToggle" type="image" src="/img/menu.png" width="60vh" height="60vh" style="background-color: rgba(0, 0, 0, 0);" />
+      <input class="menu-toggle" id="menuToggle" type="image" src="/img/menu.png" 
+            width="60vh" height="60vh"
+            style="background-color: rgba(0, 0, 0, 0);" />
     </div>
 
     <hr>
@@ -21,15 +25,19 @@
           <img src="/img/logo.png" alt="Логотип" class="menu-logo">
           <p class="menu-description">Добро пожаловать в нашу пекарню!</p>
         </div>
-        <a href="/">ГЛАВНАЯ</a>
-        <a href="/products">АССОРТИМЕНТ</a>
-        <a href="/order">ЗАКАЗ</a>
-        <a href="/about">О НАС</a>
+        <a href="/" 
+           class="<%= activePage === 'home' ? 'active' : '' %>">ГЛАВНАЯ</a>
+        <a href="/products" 
+           class="<%= activePage === 'products' ? 'active' : '' %>">АССОРТИМЕНТ</a>
+        <a href="/order" 
+           class="<%= activePage === 'order' ? 'active' : '' %>">ЗАКАЗ</a>
+        <a href="/about" 
+           class="<%= activePage === 'about' ? 'active' : '' %>">О НАС</a>
       </div>
     </nav>
   </header>
 
-  <% if (typeof extraTools !== 'undefined') { %>
+  <% if (typeof extraTools !=='undefined' ) { %>
     <%- extraTools %>
-  <% } %>
+      <% } %>
 </div>

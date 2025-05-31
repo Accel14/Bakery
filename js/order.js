@@ -2,47 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
   loadCart();
 });
 
-function removeFromCart(productId) {
-  const cart = JSON.parse(localStorage.getItem('cart')) || {};
-
-  if (!cart[productId]) return;
-  cart[productId]--;
-
-  if (cart[productId] < 1) {
-    delete cart[productId];
-  }
-
-  localStorage.setItem('cart', JSON.stringify(cart));
+function removeFromCartOrder (productId) {
+  removeFromCart(productId);
 
   loadCart();
-}
-
-function renderCartItem(product, count) {
-  const container = document.getElementById('order-list');
-
-  const el = document.createElement('div');
-  el.classList.add('order');
-  el.id = "order_" + product.id;
-
-  el.innerHTML = `
-  <img src="food/${product.image_path}" class="food-image" alt="${product.name}">
-  <h3>${product.name}</h3>
-  <p>${product.mass} гр.</p>
-  <div class="count">
-    <p id="count_${product.id}">${count} шт.</p>
-    <img class="remove-icon" alt="Удалить" src="img/remove.png">
-  </div>
-  <strong>${product.price} руб.</strong> 
-  `;
-
-  el.querySelector('.remove-icon').addEventListener('click', () => removeFromCart(product.id));
-  container.appendChild(el);
-
-  return {
-    cost: parseFloat(product.price) * count,
-    mass: parseFloat(product.mass) * count,
-    count: count
-  };
 }
 
 function loadCart() {
@@ -50,7 +13,7 @@ function loadCart() {
   let totalMass = 0;
   let totalCount = 0;
 
-  const cart = JSON.parse(localStorage.getItem('cart')) || {};
+  const cart = getCart();
   if (Object.keys(cart).length > 0) {
     document.getElementById('empty-cart')?.remove();
   }
@@ -75,6 +38,36 @@ function loadCart() {
       renderCartTotal(totalCost, totalMass, totalCount);
     });
 }
+
+function renderCartItem(product, count) {
+  const container = document.getElementById('order-list');
+
+  const el = document.createElement('div');
+  el.classList.add('order');
+  el.id = "order_" + product.id;
+
+  el.innerHTML = `
+  <img src="food/${product.image_path}" class="food-image" alt="${product.name}">
+  <h3>${product.name}</h3>
+  <p>${product.mass} гр.</p>
+  <div class="count">
+    <p id="count_${product.id}">${count} шт.</p>
+    <img class="remove-icon" alt="Удалить" src="img/remove.png">
+  </div>
+  <strong>${product.price} руб.</strong> 
+  `;
+
+  el.querySelector('.remove-icon').addEventListener('click', () => removeFromCartOrder(product.id));
+  container.appendChild(el);
+
+  return {
+    cost: parseFloat(product.price) * count,
+    mass: parseFloat(product.mass) * count,
+    count: count
+  };
+}
+
+
 
 function renderCartTotal(totalCost, totalMass, totalCount) {
   const container = document.getElementById('order-list');

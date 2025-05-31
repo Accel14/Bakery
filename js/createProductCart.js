@@ -12,9 +12,12 @@ function createProductCard(product, cart) {
         <p>${product.mass} грамм</p>
         <strong>${product.price} руб.</strong>
       </div>
-      <a href="#" class="button from-cart-btn" data-id="${product.id}">Убрать из корзины</a>
+      <a href="#" class="button from-cart-btn" data-id="${product.id}">
+        Убрать из корзины
+      </a>
       <div>
-        <a href="#" class="button to-cart-btn" data-id="${product.id}" style="position: relative;">
+        <a href="#" class="button to-cart-btn" data-id="${product.id}"
+        style="position: relative;">
           В корзину
           <div id="product-count-${product.id}" class="product-count">
             ${cart[product.id] || ''}
@@ -23,7 +26,6 @@ function createProductCard(product, cart) {
       </div>
     </div>
   `;
-  
 
   return el;
 }
@@ -32,7 +34,7 @@ function updateProductCount(productId) {
   const cart = getCart();
   const count = cart[productId] || '';
   const el = document.getElementById(`product-count-${productId}`);
-  if (count === '0' || count === '') {el.style.display = 'none';} else {el.style.display = 'inline';}
+  if (count === '0' || count === '') { el.style.display = 'none'; } else { el.style.display = 'inline'; }
   if (el) {
     el.textContent = count;
   }

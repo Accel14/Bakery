@@ -1,6 +1,7 @@
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
+const compression = require('compression'); // Импорт compression
 
 const app = express();
 const PORT = 3000;
@@ -8,9 +9,10 @@ const PORT = 3000;
 app.set('view engine', 'ejs');
 app.set('views', './views');
 app.use(cors());
-app.use(express.static('.')); // Корень проекта
-app.use('/js', express.static('js')); // Для JS-файлов
-app.use('/img', express.static('img')); // Для изображений
+app.use(express.static('.')); 
+app.use('/js', express.static('js'));
+app.use('/img', express.static('img'));
+app.use(compression()); // Использование compression
 
 const db = mysql.createConnection({
   host: 'localhost',
@@ -87,19 +89,19 @@ app.get('/api/products', (req, res) => {
 
 // Маршруты для рендера страниц
 app.get('/', (req, res) => {
-  res.render('index'); // 
+  res.render('index', { activePage: 'home' });
 });
 
 app.get('/products', (req, res) => {
-  res.render('products'); 
-});
-
-app.get('/about', (req, res) => {
-  res.render('about');
+  res.render('products', { activePage: 'products' });
 });
 
 app.get('/order', (req, res) => {
-  res.render('order'); 
+  res.render('order', { activePage: 'order' });
+});
+
+app.get('/about', (req, res) => {
+  res.render('about', { activePage: 'about' });
 });
 
 // Запуск сервера
