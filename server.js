@@ -1,7 +1,7 @@
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
-const compression = require('compression'); // Импорт compression
+const compression = require('compression');
 
 const app = express();
 const PORT = 3000;
@@ -9,10 +9,10 @@ const PORT = 3000;
 app.set('view engine', 'ejs');
 app.set('views', './views');
 app.use(cors());
-app.use(express.static('.')); 
+app.use(express.static('.'));
 app.use('/js', express.static('js'));
 app.use('/img', express.static('img'));
-app.use(compression()); // Использование compression
+app.use(compression());
 
 const db = mysql.createConnection({
   host: 'localhost',
@@ -37,13 +37,13 @@ app.get('/cart', (req, res) => {
   const productIds = req.query.productIds;
 
   if (!productIds) {
-    return res.status(400).json({ error: 'Отсутствуют ID продуктов в параметрах запроса' });
+    return res.status(400).json({ error: ' Missing product ID in the query params' });
   }
 
   const idsArray = productIds.split(',').map(id => parseInt(id.trim()));
 
   if (idsArray.some(isNaN)) {
-    return res.status(400).json({ error: 'Неверный формат ID продукта' });
+    return res.status(400).json({ error: 'Invalid product ID format' });
   }
 
   if (idsArray.length === 0) {
@@ -65,7 +65,7 @@ app.get('/cart', (req, res) => {
 
 app.get('/api/products', (req, res) => {
   const categoryId = req.query.category_id;
-  const sortBy = req.query.sort_by || 'name';    
+  const sortBy = req.query.sort_by || 'name';
   const order = req.query.order === 'desc' ? 'DESC' : 'ASC';
 
   const allowedFields = ['name', 'mass', 'price'];
