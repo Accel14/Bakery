@@ -1,14 +1,14 @@
 
 
-document.getElementById('menuToggle').addEventListener('click', function () {
-  const menu = document.getElementById('menu');
-  menu.classList.toggle('open');
-  if (document.getElementById('menuToggle').src == "img/menu.png") {
-    document.getElementById('menuToggle').src = "img/menu_close.png";
-  } else {
-    document.getElementById('menuToggle').src = "img/menu.png";
-  }
-});
+// document.getElementById('menuToggle').addEventListener('click', function () {
+//   const menu = document.getElementById('menu');
+//   menu.classList.toggle('open');
+//   if (document.getElementById('menuToggle').src == "img/menu.png") {
+//     document.getElementById('menuToggle').src = "img/menu_close.png";
+//   } else {
+//     document.getElementById('menuToggle').src = "img/menu.png";
+//   }
+// });
 
 
 

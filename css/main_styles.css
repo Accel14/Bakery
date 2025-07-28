@@ -33,9 +33,7 @@ nav {
 
   padding: 10px 20px;
   position: relative;
-  /* Добавляем, чтобы кнопка оставалась поверх меню */
   z-index: 10;
-  /* Кнопка будет над меню */
 }
 
 nav a {
@@ -46,13 +44,13 @@ nav a {
 
 .menu-header {
   display: none;
-  /* по умолчанию скрыто */
 }
 
 .menu-toggle {
   display: none;
   position: fixed;
-  right: 2vh;
+  top: 0vh;
+  right: 0vh;
 }
 
 footer {
@@ -63,11 +61,11 @@ footer {
 
 footer p {
   color: rgb(50, 45, 26);
+  font-size: 1rem;
 }
 
 main {
   min-height: calc(100vh - 100px);
-  /* 100px — примерная высота футера */
   margin: 0 auto;
   padding: 0px 0px;
   font-family: 'Segoe UI', sans-serif;
@@ -97,17 +95,38 @@ main {
 }
 
 .submenu {
-  justify-content: center; align-items: center; display: none; background: linear-gradient(rgba(17, 14, 1, 0.8), rgb(28, 23, 2)); 
-      border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; gap: 10px; padding: 10px 10px 10px 10px;
-      margin-top: -2px; border-style: none solid solid solid;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  background: linear-gradient(rgba(17, 14, 1, 0.8), rgb(28, 23, 2));
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  gap: 10px;
+  padding: 10px 10px 10px 10px;
+  margin-top: -2px;
+  border-style: none solid solid solid;
 }
+
 
 .main-menu {
-  display: flex; justify-content:space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
-/* Стили для мобильной версии */
 @media (max-width: 768px) {
+
+  footer {
+    flex-direction: column;
+  }
+
+  .social {
+    justify-content: space-around;
+  }
+
+  .bakery-name {
+    font-size: 4vh;
+    display: none;
+  }
 
   .main-menu {
     justify-content: left;
@@ -133,16 +152,17 @@ main {
     display: none;
   }
 
-  /* Кнопка меню */
   .menu-toggle {
     display: block;
-    background-color: #333;
+    width: 60px;
+    height: 60px;
     color: white;
     border: none;
     padding: 0px;
     font-size: 16px;
     position: fixed;
     z-index: 20;
+    border-radius: 0%;
     /* Кнопка меню должна быть поверх остальных элементов */
   }
 
@@ -160,20 +180,14 @@ main {
     align-items: center;
     justify-content: flex-start;
     padding-top: 20px;
-    /* Для отступа сверху */
     transition: right 0.3s ease;
-    /* Плавная анимация */
     z-index: 15;
-    /* Меню должно быть выше других элементов */
   }
 
-  /* Меню при активном состоянии (выезжает справа) */
   .menu.open {
     right: 0;
-    /* Показываем меню */
   }
 
-  /* Заголовок меню (логотип и описание) */
   .menu-header {
     display: block;
     text-align: center;
@@ -193,7 +207,6 @@ main {
     margin-bottom: 10px;
   }
 
-  /* Ссылки в меню */
   .menu a {
     color: white;
     text-decoration: none;

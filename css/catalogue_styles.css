@@ -4,17 +4,6 @@
   justify-content: center;
 }
 
-/* 
-.scroll {
-  margin: 20px auto;
-  padding: 15px;
-  max-width: 600px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-  border: 1px solid #ddd;
-} */
-
 h2 {
   font-size: 2rem;
   margin-bottom: 10px;
@@ -32,22 +21,22 @@ h2 {
 
 
 .product-count {
-  position: absolute; 
-  top:-2px; 
-  right:-2px;
-            
-  background-color: rgb(40, 28, 15); 
+  position: absolute;
+  top: -2px;
+  right: -2px;
+
+  background-color: rgb(40, 28, 15);
   border-color: orange;
-            
-  font-size: 20px; 
+
+  font-size: 20px;
   border-radius: 20px;
-            
-  text-align: center; 
+
+  text-align: center;
   justify-content: center;
-            
-  color: rgb(242, 215, 161); 
-  width: 20px; 
-  height: 20px; 
+
+  color: rgb(242, 215, 161);
+  width: 20px;
+  height: 20px;
   padding: 3px;
 
 }
@@ -179,7 +168,7 @@ h2 {
   border: none;
   cursor: pointer;
   border-radius: 10px;
-  
+
 }
 
 /* Контейнер dropdown */
@@ -218,15 +207,15 @@ h2 {
 }
 
 .category-button {
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    border-radius: 6px;
-    border-color: rgba(255, 209, 92, 0.8);
-    gap: 1px;
-    padding: 2px;
-    border-width: 1px;
-  }
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 6px;
+  border-color: rgba(255, 209, 92, 0.8);
+  gap: 1px;
+  padding: 2px;
+  border-width: 1px;
+}
 
 /* Стили для мобильной версии */
 @media (max-width: 768px) {

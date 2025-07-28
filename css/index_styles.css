@@ -11,6 +11,7 @@
 
 .feature-image {
   width: 70%;
+  height: 800px;
   border-radius: 0px;
   object-fit: cover;
   border-style: groove;
@@ -47,7 +48,7 @@
 }
 
 @media (max-width: 768px) {
-    .feature {
+  .feature {
     flex-direction: column;
   }
 
