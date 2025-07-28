@@ -15,10 +15,10 @@ app.use('/img', express.static('img'));
 app.use(compression());
 
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'root',
-  database: 'bakery'
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
 });
 
 db.connect(err => {
@@ -106,5 +106,5 @@ app.get('/about', (req, res) => {
 
 // Запуск сервера
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${process.env.PORT}`);
 });
